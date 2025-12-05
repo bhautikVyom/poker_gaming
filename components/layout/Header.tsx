@@ -11,9 +11,6 @@ const Header = () => {
       <div className="container">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-10">
-            <div className="lg:hidden">
-              <SheetMenu />
-            </div>
             <div className="">
               <Image
                 src={Logo}
@@ -21,9 +18,13 @@ const Header = () => {
                 className="h-9 lg:h-10 w-[93px] lg:w-[104px]"
               />
             </div>
+          </div>
+          <div className="lg:hidden">
+            <SheetMenu />
+          </div>
+          <div className="max-lg:hidden">
             <HeaderMenu />
           </div>
-          <div className=""><Button></Button></div>
         </div>
       </div>
     </div>

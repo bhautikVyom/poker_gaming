@@ -1,11 +1,27 @@
-import React from 'react'
+import React from "react";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
+import CommonButton from "../widget/CommonButton";
+import { Button } from "../ui/button";
+import HeaderMenu from "./HeaderMenu";
+import { TextAlignJustify } from "lucide-react";
 
 const SheetMenu = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline"><TextAlignJustify className="text-background" /></Button>
+      </SheetTrigger>
+      <SheetContent className="backdrop-blur-xl bg-background/50 border-0">
+        <SheetHeader>
+          <SheetTitle></SheetTitle>
+          <SheetDescription>
+           <HeaderMenu />
+          </SheetDescription>
+        </SheetHeader>
+        
+      </SheetContent>
+    </Sheet>
+  );
+};
 
-export default SheetMenu
+export default SheetMenu;
