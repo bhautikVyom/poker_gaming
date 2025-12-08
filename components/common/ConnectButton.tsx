@@ -5,7 +5,7 @@ import React from "react";
 const ConnectButton = ({isOpen, setIsOpen }: any) => {
   return (
     <>
-      <div className="bg-primary backdrop-blur-2xl py-3.5 flex items-center gap-5 justify-center sticky top-20 left-0">
+      <div className="bg-primary backdrop-blur-2xl py-3.5 flex items-center gap-5 justify-center sticky top-20 left-0 z-20">
         <p className="lg:text-xl font-semibold text-background">
           Connect to the game to purchase.
         </p>

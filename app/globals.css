@@ -120,7 +120,7 @@
     @apply bg-background text-foreground scroll-smooth;
   }
   .container {
-    @apply max-w-[1560px]! w-full mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1585px]! w-full mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
