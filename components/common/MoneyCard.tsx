@@ -10,7 +10,18 @@ import { PiWarningCircle } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { IoClose } from "react-icons/io5";
 
-const MoneyCard = () => {
+interface MoneyItem {
+  title: string;
+  price: string;
+  vip: string;
+  coins: string;
+}
+
+interface MoneyCardProps {
+  list?: MoneyItem[];
+}
+
+const MoneyCard = ({ list }: MoneyCardProps) => {
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
 
   const handleFlip = (index: number) => {
@@ -22,7 +33,7 @@ const MoneyCard = () => {
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
-      {[1, 2, 3, 4, 5, 6, 7].map((items, index) => (
+      {list?.map((items, index) => (
         <div
           key={index}
           className="relative h-[209px]"
@@ -53,7 +64,7 @@ const MoneyCard = () => {
               <div className="grid gap-2">
                 <div className="flex items-center gap-1.5">
                   <h3 className="capitalize lg:text-xl font-semibold text-background">
-                    Great Vault
+                    {items?.title}
                   </h3>
                   <PiWarningCircle
                     onClick={() => handleFlip(index)}
@@ -61,7 +72,7 @@ const MoneyCard = () => {
                   />
                 </div>
                 <h2 className="text-background font-bold text-xl lg:text-3xl">
-                  264,000,000,000
+                  {items?.price}
                 </h2>
                 <div className="h-10 flex items-center gap-1 px-2.5 w-fit bg-background/10 rounded mb-1">
                   <Image
@@ -71,7 +82,7 @@ const MoneyCard = () => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">2000</h3>
+                  <h3 className="text-background font-bold lg:text-xl">{items?.vip}</h3>
                   <Image
                     src={Gold}
                     alt="VIP"
@@ -79,7 +90,7 @@ const MoneyCard = () => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">10</h3>
+                  <h3 className="text-background font-bold lg:text-xl">{items?.coins}</h3>
                 </div>
                 <Button className="text-xl py-2! px-5.5 h-auto uppercase w-full">
                   login
@@ -105,12 +116,12 @@ const MoneyCard = () => {
                     className="h-[30px] w-[30px]"
                   />
                   <h3 className="text-background font-bold lg:text-xl">
-                    2000000000
+                    {items?.price}
                   </h3>
                 </div>
-                <IoClose 
-                  className="text-background size-5 cursor-pointer" 
-                  onClick={() => handleFlip(index)} 
+                <IoClose
+                  className="text-background size-5 cursor-pointer"
+                  onClick={() => handleFlip(index)}
                 />
               </div>
               <div className="flex items-center gap-1">
@@ -121,7 +132,7 @@ const MoneyCard = () => {
                   height={30}
                   className="h-[30px] w-[30px]"
                 />
-                <h3 className="text-background font-bold lg:text-xl">2000</h3>
+                <h3 className="text-background font-bold lg:text-xl">{items?.vip}</h3>
               </div>
               <div className="flex items-center gap-1">
                 <Image
@@ -131,7 +142,7 @@ const MoneyCard = () => {
                   height={30}
                   className="h-[30px] w-[30px]"
                 />
-                <h3 className="text-background font-bold lg:text-xl">10</h3>
+                <h3 className="text-background font-bold lg:text-xl">{items?.coins}</h3>
               </div>
             </div>
           </div>

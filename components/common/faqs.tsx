@@ -35,25 +35,27 @@ const Faqs = () => {
     ]
 
     return (
-        <div className='container mx-auto p-6'>
-            <h2 className="text-[40px] font-bold mb-4">FAQ</h2>
-            <Accordion
-                type="single"
-                collapsible
-                className="w-full"
-                defaultValue="item-1"
-            >
-                {faqs?.map((list, index) => (
-                    <AccordionItem value={`item-${index + 1}`} key={index}>
-                        <AccordionTrigger className='text-xl'>{list?.question}</AccordionTrigger>
-                        <AccordionContent className="flex flex-col gap-4 text-lg">
-                            {list?.answer?.map((ans) => (
-                                <p key={ans}>{ans}</p>
-                            ))}
-                        </AccordionContent>
-                    </AccordionItem>
-                ))}
-            </Accordion>
+        <div className='bg-primary'>
+            <div className='container text-background'>
+                <h2 className="text-[40px] font-bold mb-4">FAQ</h2>
+                <Accordion
+                    type="single"
+                    collapsible
+                    className="w-full"
+                    defaultValue="item-1"
+                >
+                    {faqs?.map((list, index) => (
+                        <AccordionItem value={`item-${index + 1}`} key={index}>
+                            <AccordionTrigger className='text-xl'>{list?.question}</AccordionTrigger>
+                            <AccordionContent className="flex flex-col gap-4 text-lg">
+                                {list?.answer?.map((ans) => (
+                                    <p key={ans}>{ans}</p>
+                                ))}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
         </div>
     )
 }

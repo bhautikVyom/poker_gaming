@@ -34,7 +34,7 @@ const serviceData = [
 const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-primary">
+    <div className="bg-[#1d1d1d]">
       <div className="container">
         <div className="grid lg:grid-cols-3 justify-center py-7.5 gap-6 lg:gap-10">
           <div className="grid gap-4 h-fit">
