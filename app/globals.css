@@ -117,9 +117,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground scroll-smooth;
   }
   .container {
     @apply max-w-[1560px]! w-full mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer components {
+  .bg-grediants {
+    background: linear-gradient(135deg, rgba(66, 5, 47, 0.5) 0%, #42052F 100%) !important;
   }
 }
