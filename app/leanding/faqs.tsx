@@ -48,7 +48,7 @@ const Faqs = () => {
                         <AccordionTrigger className='text-xl'>{list?.question}</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-lg">
                             {list?.answer?.map((ans) => (
-                                <p key={index}>{ans}</p>
+                                <p key={ans}>{ans}</p>
                             ))}
                         </AccordionContent>
                     </AccordionItem>
