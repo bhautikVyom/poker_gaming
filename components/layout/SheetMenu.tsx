@@ -8,10 +8,10 @@ import { TextAlignJustify } from "lucide-react";
 const SheetMenu = () => {
   return (
     <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline"><TextAlignJustify className="text-background" /></Button>
+      <SheetTrigger asChild className="border-none">
+        <Button variant="outline"><TextAlignJustify className="text-background border-none" /></Button>
       </SheetTrigger>
-      <SheetContent className="backdrop-blur-xl bg-background/50 border-0">
+      <SheetContent side="left" className="backdrop-blur-xl bg-background/50 border-0">
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription>

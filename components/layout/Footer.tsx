@@ -38,14 +38,14 @@ const Footer = () => {
       <div className="container">
         <div className="grid lg:grid-cols-3 justify-center py-7.5 gap-6 lg:gap-10">
           <div className="grid gap-4 h-fit">
-            <Link href="/">
+            <Link href="/" className="max-lg:mx-auto">
               <Image
                 src={Logo}
                 alt="Logo"
                 className="h-9 lg:h-10 w-[93px] lg:w-[104px] max-md:mx-auto"
               />
             </Link>
-            <p className="max-lg:text-sm text-background/70">
+            <p className="max-lg:text-sm text-background/70 max-lg:text-center max-lg:max-w-[480px]">
               The games are intended for an adult audience. The games do not
               offer "real money gambling" or an opportunity to win real money or
               prizes. Practice or success at social casino gaming does not imply
@@ -63,8 +63,8 @@ const Footer = () => {
                       href={items.href}
                       className={`lg:text-lg font-semibold transition-all duration-200 ${
                         isActive
-                          ? "text-primary lg:text-background"
-                          : "text-primary/70 lg:text-background/70 lg:hover:text-background hover:text-primary"
+                          ? ""
+                          : "text-background/70 hover:text-background"
                       }`}
                     >
                       {items.name}

@@ -23,7 +23,7 @@ const HeaderMenu = () => {
             <li key={index} className="relative group w-fit">
               <Link
                 href={item.link}
-                className={`text-xl font-semibold transition-all duration-200 ${
+                className={`text-lg uppercase font-bold transition-all duration-200 ${
                   isActive
                     ? "text-primary lg:text-background"
                     : "text-primary/70 lg:text-background/70 lg:hover:text-background hover:text-primary"

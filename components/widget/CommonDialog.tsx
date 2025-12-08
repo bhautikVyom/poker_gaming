@@ -9,7 +9,7 @@ import {
 } from "../../components/ui/dialog";
 import { Button } from "../ui/button";
 
-type DialogSize = "sm" | "default" | "lg" | "xl";
+type DialogSize = "sm" | "default" | "lg" | "xl" | "full";
 
 interface CommonDialogProps {
   isOpen: boolean;
@@ -45,13 +45,14 @@ const CommonDialog: React.FC<CommonDialogProps> = ({
     default: "max-w-[calc(100vw-32px)] sm:max-w-[600px]",
     lg: "max-w-[calc(100vw-32px)] sm:max-w-[800px] max-sm:px-2.5",
     xl: "max-w-[calc(100vw-32px)] sm:max-w-[1000px]",
+    full:"h-screen! w-screen! max-w-screen!"
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className={`${sizeClasses[size]} ${className ?? ""}`}>
+      <DialogContent className={`${sizeClasses[size]} ${className ?? ""} bg-transparent p-0!`}>
         <DialogHeader>
-          <div className="flex flex-row justify-between">
+          <div className="flex flex-row justify-between relative">
             <div className="flex flex-row gap-3 place-items-center">
               {title && <DialogTitle>{title}</DialogTitle>}
 

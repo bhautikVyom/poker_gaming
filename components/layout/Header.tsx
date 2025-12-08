@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -7,14 +7,19 @@ import SheetMenu from "./SheetMenu";
 import HeaderMenu from "./HeaderMenu";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import QRDialog from "../common/QRDialog";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="bg-primary py-3 lg:py-5 sticky top-0 z-20">
+    <div className="bg-[#1d1d1d] backdrop-blur-2xl py-3 lg:py-5 sticky top-0 z-20">
       <div className="container">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 lg:gap-10">
+
           <div className="flex items-center gap-10">
+          <div className="lg:hidden">
+            <SheetMenu />
+          </div>
             <Link href="/" className="">
               <Image
                 src={Logo}
@@ -23,22 +28,21 @@ const Header = () => {
               />
             </Link>
           </div>
-          <div className="lg:hidden">
-            <SheetMenu />
-          </div>
           <div className="max-lg:hidden">
             <HeaderMenu />
           </div>
-          <div>
+          {/* <div>
+            <Link href="#chips" className="font-semibold text-background/70 hover:text-background">Chips</Link>
+            <Link href="#gold" className="font-semibold text-background/70 hover:text-background">Gold</Link>
             <Button
               variant="outline"
               onClick={() => {
-                setIsOpen("add");
+                setIsOpen(true);
               }}
             >
               Connect
             </Button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
