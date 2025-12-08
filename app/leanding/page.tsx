@@ -6,6 +6,7 @@ import ConnectButton from "./ConnectButton";
 import Link from "next/link";
 import PokerPlus from "./PokerPlus";
 import Chips from "./Chips";
+import Gold from "./Gold";
 
 const LeandingPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +44,10 @@ const LeandingPage = () => {
 
       <section id="chips">
         <Chips />
+      </section>
+
+      <section id="gold">
+        <Gold />
       </section>
     </div>
   );
