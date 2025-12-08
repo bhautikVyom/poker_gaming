@@ -34,7 +34,7 @@ const HeaderMenu = () => {
 
               {/* underline animation */}
               <span
-                className={`block h-[2px] bg-primary lg:bg-background transition-all duration-300 ease-in-out ${
+                className={`block h-0.5 bg-primary lg:bg-background transition-all duration-300 ease-in-out ${
                   isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
