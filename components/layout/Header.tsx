@@ -15,12 +15,11 @@ const Header = () => {
     <div className="bg-[#1d1d1d] backdrop-blur-2xl py-3 lg:py-5 sticky top-0 z-20">
       <div className="container">
         <div className="flex items-center gap-4 lg:gap-10">
-
-          <div className="flex items-center gap-10">
-          <div className="lg:hidden">
-            <SheetMenu />
-          </div>
-            <Link href="/" className="">
+          <div className="flex items-center gap-10 w-full">
+            <div className="lg:hidden">
+              <SheetMenu />
+            </div>
+            <Link href="/" className="max-lg:w-full max-lg:flex justify-center max-lg:-ml-20">
               <Image
                 src={Logo}
                 alt="Logo"

@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
         <Separator className="opacity-15" />
         <div className="p-4 text-center">
-              <p className="text-background/70 text-sm">©2025 Zynga, Inc. Zynga, Zynga Poker</p>
+              <p className="text-background/70 text-sm">©{new Date().getFullYear()} Zynga, Inc. Zynga, Zynga Poker</p>
         </div>
       </div>
     </div>
