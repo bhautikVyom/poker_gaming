@@ -1,25 +1,64 @@
 import QRDialog from "@/components/common/QRDialog";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import React from "react";
+import Chips from "@/assets/images/chips-coin.avif"
+import Gold from "@/assets/images/chips-coin.avif"
 
-const ConnectButton = ({isOpen, setIsOpen }: any) => {
+const ConnectButton = ({ isOpen, setIsOpen }: any) => {
   return (
     <>
-      <div className="bg-primary backdrop-blur-2xl py-3.5 flex items-center gap-5 justify-center sticky top-20 left-0 z-20">
-        <p className="lg:text-xl font-semibold text-background">
-          Connect to the game to purchase.
-        </p>
-        <Button
-          variant="outline"
-          className="text-xl py-1.5! px-5.5 h-auto uppercase"
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
-          Connect
-        </Button>
+      <div className="lg:flex lg:items-center gap-5 lg:justify-center sticky top-[60px] lg:top-20 left-0 z-20 w-full">
+        {/* <div className="bg-primary backdrop-blur-2xl px-4 py-3.5 py-3.5">
+          <p className="lg:text-xl font-semibold text-background">
+            Connect to the game to purchase.
+          </p>
+          <Button
+            variant="outline"
+            className="text-xl py-1.5! px-5.5 h-auto uppercase"
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            Connect
+          </Button>
+        </div> */}
+        <>
+          <div>
+            <div className="bg-primary/80 backdrop-blur-2xl h-10 flex items-center justify-center gap-4">
+            <div className="flex items-center gap-2">
+              <Image src={Chips} alt="Chips Image" width={24} height={24} className="size-6"/>
+              <span className="text-background font-semibold">0</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Image src={Gold} alt="Chips Image" width={24} height={24} className="size-6"/>
+              <span className="text-background font-semibold">0</span>
+            </div>
+            </div>
+            <div className="p-4 bg-primary flex justify-start gap-4 lg:hidden">
+              <div className="h-16 w-16 rounded-full overflow-hidden border">
+                {/* Profile Image */}
+                {/* <Image src={} alt="Profile Image" height={100} width={100} className="w-full h-full object-cover bg-cover bg-center" /> */}
+              </div>
+              <div className="grid gap-1">
+                <h3 className="text-background text-xl line-clamp-1">
+                  Welcome, Priyank
+                </h3>
+                <h3 className="text-background text-sm line-clamp-1">
+                  Account: {"9823154894812"}
+                </h3>
+                <div className="flex items-center gap-3">
+                  <div className="h-3 w-3 rounded-full bg-blue-500"></div>
+                  <h3 className="text-background text-sm line-clamp-1">
+                    Sapphire
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       </div>
-      
+
       <QRDialog isOpen={isOpen} setIsOpen={setIsOpen} />
     </>
   );
