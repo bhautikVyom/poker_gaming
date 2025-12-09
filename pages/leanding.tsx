@@ -6,6 +6,7 @@ import Link from "next/link";
 import ConnectButton from "@/components/common/ConnectButton";
 import PokerPlus from "@/components/common/PokerPlus";
 import Card from "@/components/common/Card";
+import Faqs from "@/components/common/faqs";
 
 const data = [
     {
@@ -90,6 +91,8 @@ const LeandingPage = () => {
                     <Card list={list} />
                 </section>
             ))}
+
+            <Faqs />
         </div>
     );
 };

@@ -18,7 +18,7 @@ const QRDialog: React.FC<QRDialogProps> = ({ isOpen, setIsOpen }) => {
 
   return (
     <div>
-      <CommonDialog isOpen={isOpen} onClose={setIsOpen} size="lg">
+      <CommonDialog isOpen={isOpen} onClose={setIsOpen} size="lg" title="">
         {/* Close button */}
         <div
           className="fixed right-0 top-0 z-20 cursor-pointer"

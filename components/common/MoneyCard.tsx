@@ -9,6 +9,7 @@ import VIP from "@/assets/images/vip.avif";
 import { PiWarningCircle } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { IoClose } from "react-icons/io5";
+import QRDialog from "./QRDialog";
 
 interface MoneyItem {
   title: string;
@@ -19,15 +20,19 @@ interface MoneyItem {
 
 interface MoneyCardProps {
   list?: MoneyItem[];
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MoneyCard = ({ list }: MoneyCardProps) => {
-  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>({});
+const MoneyCard = ({ list, isOpen, setIsOpen }: MoneyCardProps) => {
+  const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
+    {}
+  );
 
   const handleFlip = (index: number) => {
-    setFlippedCards(prev => ({
+    setFlippedCards((prev) => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: !prev[index],
     }));
   };
 
@@ -43,8 +48,11 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
             className="absolute inset-0 rounded-xl p-4 border border-input/40 bg-gradient-to-b from-primary to-background/30"
             style={{
               transformStyle: "preserve-3d",
-              transform: flippedCards[index] ? "rotateX(180deg)" : "rotateX(0deg)",
-              transition: "transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+              transform: flippedCards[index]
+                ? "rotateX(180deg)"
+                : "rotateX(0deg)",
+              transition:
+                "transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
             }}
           >
             {/* Front */}
@@ -82,7 +90,9 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">{items?.vip}</h3>
+                  <h3 className="text-background font-bold lg:text-xl">
+                    {items?.vip}
+                  </h3>
                   <Image
                     src={Gold}
                     alt="VIP"
@@ -90,9 +100,16 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">{items?.coins}</h3>
+                  <h3 className="text-background font-bold lg:text-xl">
+                    {items?.coins}
+                  </h3>
                 </div>
-                <Button className="text-xl py-2! px-5.5 h-auto uppercase w-full">
+                <Button
+                  className="text-xl py-2! px-5.5 h-auto uppercase w-full"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
                   login
                 </Button>
               </div>
@@ -132,7 +149,9 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                   height={30}
                   className="h-[30px] w-[30px]"
                 />
-                <h3 className="text-background font-bold lg:text-xl">{items?.vip}</h3>
+                <h3 className="text-background font-bold lg:text-xl">
+                  {items?.vip}
+                </h3>
               </div>
               <div className="flex items-center gap-1">
                 <Image
@@ -142,12 +161,16 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                   height={30}
                   className="h-[30px] w-[30px]"
                 />
-                <h3 className="text-background font-bold lg:text-xl">{items?.coins}</h3>
+                <h3 className="text-background font-bold lg:text-xl">
+                  {items?.coins}
+                </h3>
               </div>
             </div>
           </div>
         </div>
       ))}
+
+      <QRDialog isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
