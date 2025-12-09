@@ -129,6 +129,22 @@ function DialogDescription({
   )
 }
 
+function VisuallyHidden({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      className={cn(
+        "absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0",
+        className
+      )}
+      style={{
+        clip: "rect(0, 0, 0, 0)",
+        clipPath: "inset(50%)",
+      }}
+      {...props}
+    />
+  )
+}
+
 export {
   Dialog,
   DialogClose,
@@ -140,4 +156,5 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  VisuallyHidden
 }

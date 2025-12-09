@@ -6,6 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  VisuallyHidden,
 } from "../../components/ui/dialog";
 import { Button } from "../ui/button";
 
@@ -45,7 +46,7 @@ const CommonDialog: React.FC<CommonDialogProps> = ({
     default: "max-w-[calc(100vw-32px)] sm:max-w-[600px]",
     lg: "max-w-[calc(100vw-32px)] sm:max-w-[800px] max-sm:px-2.5",
     xl: "max-w-[calc(100vw-32px)] sm:max-w-[1000px]",
-    full:"h-screen! w-screen! max-w-screen!"
+    full: "h-screen! w-screen! max-w-screen!"
   };
 
   return (
@@ -54,7 +55,7 @@ const CommonDialog: React.FC<CommonDialogProps> = ({
         <DialogHeader>
           <div className="flex flex-row justify-between relative">
             <div className="flex flex-row gap-3 place-items-center">
-              {title && <DialogTitle>{title}</DialogTitle>}
+              <VisuallyHidden><DialogTitle>{title}</DialogTitle></VisuallyHidden>
 
               {editClick && (
                 <>
