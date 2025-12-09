@@ -20,11 +20,11 @@ interface MoneyItem {
 
 interface MoneyCardProps {
   list?: MoneyItem[];
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MoneyCard = ({ list, isOpen, setIsOpen }: MoneyCardProps) => {
+const MoneyCard = ({ list }: MoneyCardProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
     {}
   );
