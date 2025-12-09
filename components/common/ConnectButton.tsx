@@ -8,8 +8,8 @@ import Gold from "@/assets/images/chips-coin.avif"
 const ConnectButton = ({ isOpen, setIsOpen }: any) => {
   return (
     <>
-      <div className="lg:flex lg:items-center gap-5 lg:justify-center sticky top-[60px] lg:top-20 left-0 z-20 w-full">
-        {/* <div className="bg-primary backdrop-blur-2xl px-4 py-3.5 py-3.5">
+      <div className="sticky top-[60px] lg:top-20 left-0 z-20 w-full">
+        <div className="bg-primary backdrop-blur-2xl px-4 py-3.5 w-full flex items-center justify-center gap-5">
           <p className="lg:text-xl font-semibold text-background">
             Connect to the game to purchase.
           </p>
@@ -22,9 +22,9 @@ const ConnectButton = ({ isOpen, setIsOpen }: any) => {
           >
             Connect
           </Button>
-        </div> */}
+        </div>
         <>
-          <div>
+          {/* <div>
             <div className="bg-primary/80 backdrop-blur-2xl h-10 flex items-center justify-center gap-4">
             <div className="flex items-center gap-2">
               <Image src={Chips} alt="Chips Image" width={24} height={24} className="size-6"/>
@@ -37,8 +37,7 @@ const ConnectButton = ({ isOpen, setIsOpen }: any) => {
             </div>
             <div className="p-4 bg-primary flex justify-start gap-4 lg:hidden">
               <div className="h-16 w-16 rounded-full overflow-hidden border">
-                {/* Profile Image */}
-                {/* <Image src={} alt="Profile Image" height={100} width={100} className="w-full h-full object-cover bg-cover bg-center" /> */}
+                <Image src={Gold} alt="Profile Image" height={100} width={100} className="w-full h-full object-cover bg-cover bg-center" />
               </div>
               <div className="grid gap-1">
                 <h3 className="text-background text-xl line-clamp-1">
@@ -55,7 +54,7 @@ const ConnectButton = ({ isOpen, setIsOpen }: any) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </>
       </div>
 

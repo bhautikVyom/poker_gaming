@@ -34,7 +34,7 @@ const serviceData = [
 const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="bg-[#1d1d1d]">
+    <div className="bg-[#1d1d1d] max-lg:text-center">
       <div className="container">
         <div className="grid lg:grid-cols-3 justify-center py-7.5 gap-6 lg:gap-10">
           <div className="grid gap-4 h-fit">
@@ -58,10 +58,10 @@ const Footer = () => {
               {serviceData.map((items, index) => {
                 const isActive = pathname === items.href;
                 return (
-                  <li key={index} className="relative group w-fit">
+                  <li key={index} className="relative group lg:w-fit">
                     <Link
                       href={items.href}
-                      className={`lg:text-lg font-semibold transition-all duration-200 ${
+                      className={`lg:text-lg font-semibold transition-all duration-200 max-lg:inline-block max-lg:text-center ${
                         isActive
                           ? ""
                           : "text-background/70 hover:text-background"
