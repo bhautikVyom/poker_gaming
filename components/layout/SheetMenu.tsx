@@ -11,7 +11,7 @@ const SheetMenu = () => {
       <SheetTrigger asChild className="border-none">
         <Button variant="outline"><TextAlignJustify className="text-background border-none" /></Button>
       </SheetTrigger>
-      <SheetContent side="left" className="backdrop-blur-xl bg-background/50 border-0">
+      <SheetContent className="backdrop-blur-xl bg-primary/50 border-0">
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription>

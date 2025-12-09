@@ -16,7 +16,7 @@ const HeaderMenu = () => {
 
   return (
     <div>
-      <ul className="grid lg:flex items-center gap-5 lg:gap-10 max-lg:mt-10">
+      <ul className="grid lg:flex items-center gap-5 lg:gap-10 max-lg:mt-10 max-lg:justify-center">
         {MenuData.map((item, index) => {
           const isActive = pathname === item.link;
           return (
@@ -25,8 +25,8 @@ const HeaderMenu = () => {
                 href={item.link}
                 className={`text-lg uppercase font-bold transition-all duration-200 ${
                   isActive
-                    ? "text-primary lg:text-background"
-                    : "text-primary/70 lg:text-background/70 lg:hover:text-background hover:text-primary"
+                    ? "text-background"
+                    : "text-background/70 hover:text-background"
                 }`}
               >
                 {item.name}
@@ -34,7 +34,7 @@ const HeaderMenu = () => {
 
               {/* underline animation */}
               <span
-                className={`block h-0.5 bg-primary lg:bg-background transition-all duration-300 ease-in-out ${
+                className={`block h-0.5 bg-background lg:bg-background transition-all duration-300 ease-in-out ${
                   isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
