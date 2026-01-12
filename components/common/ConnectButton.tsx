@@ -44,7 +44,7 @@ const ConnectButton = ({ isOpen, setIsOpen }: any) => {
             </div>
           </div>
         ) : (
-          <div className="bg-primary backdrop-blur-2xl px-4 py-3.5 w-full flex items-center justify-center gap-5">
+          <div className="bg-[#1d1d1d] backdrop-blur-2xl px-4 py-3.5 w-full flex items-center justify-center gap-5">
             <p className="lg:text-xl font-semibold text-background">
               Connect to the game to purchase.
             </p>

@@ -25,8 +25,8 @@ const HeaderMenu = () => {
                 href={item.link}
                 className={`text-lg uppercase font-bold transition-all duration-200 ${
                   isActive
-                    ? "text-background"
-                    : "text-background/70 hover:text-background"
+                    ? "text-primary"
+                    : "text-primary/70 hover:text-primary"
                 }`}
               >
                 {item.name}
@@ -34,7 +34,7 @@ const HeaderMenu = () => {
 
               {/* underline animation */}
               <span
-                className={`block h-0.5 bg-background lg:bg-background transition-all duration-300 ease-in-out ${
+                className={`block h-0.5 bg-primary lg:bg-primary transition-all duration-300 ease-in-out ${
                   isActive ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
