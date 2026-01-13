@@ -47,9 +47,9 @@ const Footer = () => {
             </Link>
             <p className="max-lg:text-sm text-background/70 max-lg:text-center max-lg:max-w-[480px]">
               The games are intended for an adult audience. The games do not
-              offer "real money gambling" or an opportunity to win real money or
+              offer &quot;real money gambling&quot; or an opportunity to win real money or
               prizes. Practice or success at social casino gaming does not imply
-              future success at "real money gambling".
+              future success at &quot;real money gambling&quot;.
             </p>
           </div>
           <div className="grid gap-5 justify-center">

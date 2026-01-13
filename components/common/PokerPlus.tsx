@@ -15,7 +15,7 @@ const PokerPlus = () => {
             Download Zynga Poker +plus for extra value on purchases! All your
             progress, chips, and achievements transfer seamlessly.
           </p>
-          <Button variant="outline" className="text-xl py-1.5! px-5.5 h-auto uppercase bg-gradient-to-b from-[#C9964E] via-[#E7BE7A] to-[#F7E3A3]">CLAIM BONUS</Button>
+          <Button variant="outline" className="text-xl text-primary font-semibold py-1.5! px-5.5 h-auto uppercase bg-gradient-to-b from-[#C9964E] via-[#E7BE7A] to-[#F7E3A3]">CLAIM BONUS</Button>
         </div>
       </div>
       <div className="lg:col-span-1">

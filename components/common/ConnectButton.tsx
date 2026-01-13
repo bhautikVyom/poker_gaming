@@ -5,7 +5,12 @@ import React from "react";
 import Chips from "@/assets/images/chips-coin.avif"
 import Gold from "@/assets/images/chips-coin.avif"
 
-const ConnectButton = ({ isOpen, setIsOpen }: any) => {
+interface Props {
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
   const userProfile = false // this condition for user Profile open in mobile view
 
   return (

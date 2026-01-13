@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import ConnectButton from "@/components/common/ConnectButton";
 import PokerPlus from "@/components/common/PokerPlus";
 import Card from "@/components/common/Card";

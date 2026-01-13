@@ -4,8 +4,15 @@ import React from 'react'
 interface CardProps {
   list?: {
     name: string;
-    data: any[];
+    data: MoneyItem[];
   };
+}
+
+interface MoneyItem {
+  title: string;
+  price: string;
+  vip: string;
+  coins: string;
 }
 
 const Card = ({ list }: CardProps) => {
