@@ -11,7 +11,21 @@ interface Props {
 }
 
 const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
-  const userProfile = false // this condition for user Profile open in mobile view
+  const userProfile = false
+
+  const isMobileOrWebView = () => {
+    if (typeof window === "undefined") return false;
+
+    const ua = navigator.userAgent || navigator.vendor;
+
+    const isMobile = /android|iphone|ipad|ipod/i.test(ua);
+
+    const isWebView =
+      /(wv|WebView)/i.test(ua) ||
+      (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua));
+
+    return isMobile || isWebView;
+  };
 
   return (
     <>
@@ -57,7 +71,12 @@ const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
               variant="outline"
               className="text-xl py-1.5! px-5.5 h-auto uppercase"
               onClick={() => {
-                setIsOpen(true);
+                if (isMobileOrWebView()) {
+                  window.location.href =
+                    "https://lalapoker.onelink.me/Wn19/rewardCampaign?code=weblogin&deep_link_value=weblogin";
+                } else {
+                  setIsOpen(true);
+                }
               }}
             >
               Connect
