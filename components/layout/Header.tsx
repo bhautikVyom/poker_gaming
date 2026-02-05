@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Logo from "../../assets/images/logo.png";
+import Logo from "../../assets/images/logo1.png";
 import SheetMenu from "./SheetMenu";
 import HeaderMenu from "./HeaderMenu";
 import { Button } from "../ui/button";
@@ -13,7 +13,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-gradient-to-b from-[#C9964E] via-[#E7BE7A] to-[#F7E3A3] backdrop-blur-2xl py-3 lg:py-5 sticky top-0 z-20">
+    <div className="bg-primary backdrop-blur-2xl py-3 lg:py-5 sticky top-0 z-20">
       <div className="container">
         <div className="flex items-center gap-4 lg:gap-10">
           <div className="flex items-center gap-10 w-full max-lg:justify-between">

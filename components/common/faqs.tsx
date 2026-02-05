@@ -35,8 +35,8 @@ const Faqs = () => {
     ]
 
     return (
-        <div className='bg-primary pb-10 lg:pb-24'>
-            <div className='container text-background'>
+        <div className='pb-10 lg:pb-24'>
+            <div className='container text-primary'>
                 <h2 className="text-[40px] font-bold mb-4">FAQ</h2>
                 <Accordion
                     type="single"

@@ -33,7 +33,7 @@ const QRDialog: React.FC<QRDialogProps> = ({ isOpen, setIsOpen }) => {
                 <Image src={PokerImage} alt="Poker Table" width={800} height={400} className="bg-contain object-contain w-full h-full" />
             </div>
             <div className="grid gap-4 h-fit pb-8">
-                <h2 className="text-background text-2xl font-semibold text-center">Connect to the Zynga Poker Store!</h2>
+                <h2 className="text-background text-2xl font-semibold text-center">Connect to the Lala Poker Store!</h2>
                 <p className="text-center text-background lg:text-lg">Connect to the game to purchase items.</p>
                 <Image src={QRImage} alt="Poker Table" width={200} height={200} className="bg-contain object-contain mx-auto" />
             </div>

@@ -25,8 +25,8 @@ const HeaderMenu = () => {
                 href={item.link}
                 className={`text-lg uppercase font-bold transition-all duration-200 ${
                   isActive
-                    ? "text-primary"
-                    : "text-primary/70 hover:text-primary"
+                    ? "text-white"
+                    : "text-white/70 hover:text-white"
                 }`}
               >
                 {item.name}

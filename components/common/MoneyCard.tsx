@@ -2,10 +2,17 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Chips from "@/assets/images/chips.avif";
+import i1 from "@/assets/images/1.png";
+import i2 from "@/assets/images/2.png";
+import i3 from "@/assets/images/3.png";
+import i4 from "@/assets/images/4.png";
+import i5 from "@/assets/images/5.png";
+import i6 from "@/assets/images/6.png";
+import i7 from "@/assets/images/7.png";
+import i8 from "@/assets/images/8.png";
+
 import ChipsCoin from "@/assets/images/chips-coin.avif";
 import Gold from "@/assets/images/gold.avif";
-import VIP from "@/assets/images/vip.avif";
 import { PiWarningCircle } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { IoClose } from "react-icons/io5";
@@ -58,6 +65,21 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
     }
   }
 
+  const getImageByPrice = (price: string) => {
+    const amount = Number(price);
+
+    if (amount >= 0 && amount < 50) return i1;
+    if (amount >= 50 && amount < 100) return i2;
+    if (amount >= 100 && amount < 200) return i3;
+    if (amount >= 200 && amount < 300) return i4;
+    if (amount >= 300 && amount < 500) return i5;
+    if (amount >= 500 && amount < 1000) return i6;
+    if (amount >= 1000 && amount < 2000) return i7;
+
+    return i8;
+  };
+
+
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
       {list?.filter(item => item?.type === "chips")?.map((items, index) => (
@@ -67,7 +89,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
           style={{ perspective: "1000px" }}
         >
           <div
-            className="absolute inset-0 rounded-xl p-4 border border-input/40 bg-gradient-to-b from-primary to-background/30"
+            className="absolute inset-0 rounded-xl p-4 border border-input/40 bg-gradient-to-b from-[#C9964E] via-[#E7BE7A] to-[#F7E3A3]"
             style={{
               transformStyle: "preserve-3d",
               transform: flippedCards[index]
@@ -82,29 +104,26 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
               className="absolute inset-0 p-4 flex items-start gap-3"
               style={{ backfaceVisibility: "hidden" }}
             >
-              <div className="size-[120px]">
-                <Image
-                  src={Chips}
-                  alt="Chips"
-                  width={120}
-                  height={120}
-                  className=""
-                />
-              </div>
+              <Image
+                src={getImageByPrice(items?.price)}
+                alt="Chips"
+                className="w-[120px] h-[120px] object-contain"
+              />
+
               <div className="grid gap-2">
                 <div className="flex items-center gap-1.5">
-                  <h3 className="capitalize lg:text-xl font-semibold text-background">
+                  <h3 className="capitalize lg:text-xl font-semibold text-primary">
                     {items?.title || "Chips"}
                   </h3>
                   <PiWarningCircle
                     onClick={() => handleFlip(index)}
-                    className="cursor-pointer rotate-180 text-background size-5"
+                    className="cursor-pointer rotate-180 text-primary size-5"
                   />
                 </div>
-                <h2 className="text-background font-bold text-xl lg:text-3xl">
+                <h2 className="text-primary font-bold text-xl lg:text-3xl">
                   ${items?.price}
                 </h2>
-                <div className="h-10 flex items-center gap-1 px-2.5 w-fit bg-background/10 rounded mb-1">
+                <div className="h-10 flex items-center gap-1 px-2.5 w-fit bg-primary/20 rounded-sm mb-1">
                   <Image
                     src={ChipsCoin}
                     alt="VIP"
@@ -112,7 +131,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">
+                  <h3 className="text-primary font-bold lg:text-xl">
                     {items?.amount}
                   </h3>
                 </div>
@@ -155,12 +174,12 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-background font-bold lg:text-xl">
+                  <h3 className="text-primary font-bold lg:text-xl">
                     {items?.price}
                   </h3>
                 </div>
                 <IoClose
-                  className="text-background size-5 cursor-pointer"
+                  className="text-primary size-5 cursor-pointer"
                   onClick={() => handleFlip(index)}
                 />
               </div>
@@ -172,7 +191,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                   height={30}
                   className="h-[30px] w-[30px]"
                 />
-                <h3 className="text-background font-bold lg:text-xl">
+                <h3 className="text-primary font-bold lg:text-xl">
                   {items?.amount}
                 </h3>
               </div>

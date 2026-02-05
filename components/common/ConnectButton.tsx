@@ -58,13 +58,13 @@ const ConnectButton = ({ isOpen, setIsOpen, uid, userProfile, profile }: Props) 
             </div>
           </div>
         ) : (
-          <div className="bg-[#1d1d1d] backdrop-blur-2xl px-4 py-3.5 w-full flex items-center justify-center gap-5">
-            <p className="lg:text-xl font-semibold text-background">
+          <div className="bg-gradient-to-b from-[#C9964E] via-[#E7BE7A] to-[#F7E3A3] text-primary backdrop-blur-2xl px-4 py-3.5 w-full flex items-center justify-center gap-5">
+            <p className="lg:text-xl font-semibold">
               Connect to the game to purchase.
             </p>
             <Button
               variant="outline"
-              className="text-xl py-1.5! px-5.5 h-auto uppercase"
+              className="text-xl py-1.5! px-5.5 h-auto uppercase text-primary border-primary"
               onClick={() => {
                 if (isMobileOrWebView()) {
                   window.location.href =

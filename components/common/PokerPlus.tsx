@@ -5,13 +5,13 @@ import Image from "next/image";
 
 const PokerPlus = () => {
   return (
-    <div className="bg-primary grid lg:grid-cols-2">
+    <div className="grid lg:grid-cols-2 text-primary">
       <div className="lg:col-span-1 max-w-[500px] lg:ml-32 w-full flex items-center justify-center">
         <div className="flex flex-col gap-y-4 p-4 lg:p-8 items-center lg:items-start justify-center">
-          <h3 className="font-semibold text-background text-4xl">
+          <h3 className="font-semibold text-4xl">
             Lala gaming
           </h3>
-          <p className="text-background/80 max-md:text-center">
+          <p className="max-md:text-center">
             Download Zynga Poker +plus for extra value on purchases! All your
             progress, chips, and achievements transfer seamlessly.
           </p>
@@ -24,7 +24,7 @@ const PokerPlus = () => {
           alt="Bonus Image"
           width={800}
           height={700}
-          className="max-h-[600px] h-full w-full object-cover bg-cover bg-center" />
+          className="max-h-[800px] h-full w-full object-cover bg-cover bg-center" />
       </div>
     </div>
   );
