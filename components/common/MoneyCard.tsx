@@ -26,6 +26,7 @@ interface MoneyItem {
   amount: string;
   priceId?: string;
   plan_id?: string;
+  active?: boolean;
 }
 
 interface MoneyCardProps {
@@ -35,6 +36,7 @@ interface MoneyCardProps {
 const MoneyCard = ({ list, uid }: MoneyCardProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
+  const [link, setLink] = useState("")
 
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
     {}
@@ -48,6 +50,8 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
   };
 
   const handlePurchase = async (items: MoneyItem) => {
+    console.log("items",items);
+    
     const payload = {
       uid: uid,
       plan_id: items?.plan_id,
@@ -57,11 +61,9 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
       priceId: items?.priceId
     }
 
-    console.log("payload", payload);
-
     const response = await ApiService.purchaseChips(payload)
     if (response) {
-      alert("Purchase successful!")
+      setLink(response?.url)
     }
   }
 
@@ -82,7 +84,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
-      {list?.filter(item => item?.type === "chips")?.map((items, index) => (
+      {list?.filter(item => item?.type === "chips" && item?.active === true)?.map((items, index) => (
         <div
           key={index}
           className="relative h-[209px]"
