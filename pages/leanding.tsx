@@ -2,15 +2,35 @@
 
 import { useEffect, useState } from "react";
 import ConnectButton from "@/components/common/ConnectButton";
-import PokerPlus from "@/components/common/PokerPlus";
-import Card from "@/components/common/Card";
 import Faqs from "@/components/common/faqs";
 import ApiService from "@/service/ApiUrl";
 import MoneyCard from "@/components/common/MoneyCard";
+import { useSearchParams } from "next/navigation";
+import { isMobileOrWebView } from "@/deviceType";
+
+interface profile {
+    userName: string;
+    pp: string;
+    chips: number;
+    uData: {
+        userName: string;
+        uniqueId: string;
+        chips: number;
+    };
+}
 
 const LeandingPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState<any>();
+    const [userProfile, setUserProfile] = useState(false)
+    const [profile, setProfile] = useState<profile>()
+
+    const searchParams = useSearchParams();
+    let uid;
+
+    if (isMobileOrWebView()) {
+        uid = searchParams?.get("uid");
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,9 +40,31 @@ const LeandingPage = () => {
 
         fetchData();
     }, [])
+
+    useEffect(() => {
+        if (!uid) return;
+
+        const fetchData = async () => {
+            if (isMobileOrWebView()) {
+
+                const payload = {
+                    uid: uid
+                }
+                const result = await ApiService.webLogin(payload)
+
+                if (result) {
+                    setProfile(result)
+                    setUserProfile(true)
+                }
+            }
+        }
+
+        fetchData()
+    }, [])
+
     return (
         <div>
-            <ConnectButton setIsOpen={setIsOpen} isOpen={isOpen} />
+            <ConnectButton setIsOpen={setIsOpen} isOpen={isOpen} uid={uid} userProfile={userProfile} profile={profile} />
 
             {/* <div className="flex items-center justify-center gap-4 bg-[#1d1d1d] p-2.5">
                 <Link
@@ -52,8 +94,6 @@ const LeandingPage = () => {
                 </div>
             </div> */}
 
-
-
             <div className="bg-primary pb-10 lg:pb-24">
                 <div className="container">
                     <div className="grid gap-7">
@@ -65,7 +105,7 @@ const LeandingPage = () => {
                             or bought directly. Using the Zynga Poker Store gives you 20% more
                             Chips on purchases compared to the standard in-game Chips Store.
                         </p>
-                        <MoneyCard list={data?.chipsStore} />
+                        <MoneyCard list={data?.chipsStore} uid={uid} />
                     </div>
                 </div>
             </div>

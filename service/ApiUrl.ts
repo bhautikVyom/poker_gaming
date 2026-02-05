@@ -17,12 +17,12 @@ const getWebStore = async () => {
     return await apiGet<WebStoreItem[]>('/getWebStore');
 }
 
-const webLogin = async (payload: any) => {
+const webLogin = async (payload: string) => {
     return await apiPost('/webLogin', payload);
 }
 
-const purchaseChips = async () => {
-    return await apiPost('/purchaseChips');
+const purchaseChips = async (payload) => {
+    return await apiPost('/purchaseChips', payload);
 }
 
 const ApiService = {

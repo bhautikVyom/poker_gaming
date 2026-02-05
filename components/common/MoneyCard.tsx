@@ -10,19 +10,22 @@ import { PiWarningCircle } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { IoClose } from "react-icons/io5";
 import QRDialog from "./QRDialog";
+import ApiService from "@/service/ApiUrl";
 
 interface MoneyItem {
   type: string;
   title: string;
   price: string;
   amount: string;
+  priceId?: string;
+  plan_id?: string;
 }
 
 interface MoneyCardProps {
   list?: MoneyItem[];
 }
 
-const MoneyCard = ({ list }: MoneyCardProps) => {
+const MoneyCard = ({ list, uid }: MoneyCardProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -37,8 +40,26 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
     }));
   };
 
+  const handlePurchase = async (items: MoneyItem) => {
+    const payload = {
+      uid: uid,
+      plan_id: items?.plan_id,
+      price: items?.price,
+      amount: items?.amount,
+      PurchaseType: items?.type,
+      priceId: items?.priceId
+    }
+
+    console.log("payload", payload);
+
+    const response = await ApiService.purchaseChips(payload)
+    if (response) {
+      alert("Purchase successful!")
+    }
+  }
+
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
       {list?.filter(item => item?.type === "chips")?.map((items, index) => (
         <div
           key={index}
@@ -95,14 +116,25 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                     {items?.amount}
                   </h3>
                 </div>
-                <Button
-                  className="text-xl py-2! px-5.5 h-auto uppercase w-full"
-                  onClick={() => {
-                    setIsOpen(true);
-                  }}
-                >
-                  login
-                </Button>
+                {uid ? (
+                  <Button
+                    className="text-xl py-2! px-5.5 h-auto uppercase w-full"
+                    onClick={() => handlePurchase(items)}
+                  >
+                    Purchse
+                  </Button>
+                ) : (
+                  <Button
+                    className="text-xl py-2! px-5.5 h-auto uppercase w-full"
+                    onClick={
+                      () => {
+                        setIsOpen(true);
+                      }
+                    }
+                  >
+                    login
+                  </Button>
+                )}
               </div>
             </div>
 
@@ -147,10 +179,11 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
             </div>
           </div>
         </div>
-      ))}
+      ))
+      }
 
       <QRDialog isOpen={isOpen} setIsOpen={setIsOpen} />
-    </div>
+    </div >
   );
 };
 

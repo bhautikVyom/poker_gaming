@@ -1,46 +1,31 @@
 import QRDialog from "@/components/common/QRDialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Chips from "@/assets/images/chips-coin.avif"
 import Gold from "@/assets/images/chips-coin.avif"
 import { isMobileOrWebView } from "@/deviceType";
-import ApiService from "@/service/ApiUrl";
-
-interface Props {
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
 
 interface profile {
   userName: string;
   pp: string;
   chips: number;
+  uData: {
+    userName: string;
+    uniqueId: string;
+    chips: number;
+  };
 }
 
-const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
-  const [userProfile, setUserProfile] = useState(false)
-  const [profile, setProfile] = useState<profile>()
-  console.log("profile", profile);
+interface Props {
+  isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  uid: string
+  profile: profile
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (isMobileOrWebView()) {
+const ConnectButton = ({ isOpen, setIsOpen, uid, userProfile, profile }: Props) => {
 
-        const payload = {
-          uid: "68c8fb1b212dc220dcd56508"
-        }
-        const result = await ApiService.webLogin(payload)
-
-        if (result) {
-          setProfile(result)
-          setUserProfile(true)
-        }
-      }
-    }
-
-    fetchData()
-  }, [])
   return (
     <>
       <div className="sticky top-[60px] lg:top-20 left-0 z-20 w-full">
