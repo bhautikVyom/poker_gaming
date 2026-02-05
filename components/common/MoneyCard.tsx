@@ -12,10 +12,10 @@ import { IoClose } from "react-icons/io5";
 import QRDialog from "./QRDialog";
 
 interface MoneyItem {
+  type: string;
   title: string;
   price: string;
-  vip: string;
-  coins: string;
+  amount: string;
 }
 
 interface MoneyCardProps {
@@ -23,6 +23,7 @@ interface MoneyCardProps {
 }
 
 const MoneyCard = ({ list }: MoneyCardProps) => {
+
   const [isOpen, setIsOpen] = useState(false)
 
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
@@ -38,7 +39,7 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
-      {list?.map((items, index) => (
+      {list?.filter(item => item?.type === "chips")?.map((items, index) => (
         <div
           key={index}
           className="relative h-[209px]"
@@ -72,7 +73,7 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
               <div className="grid gap-2">
                 <div className="flex items-center gap-1.5">
                   <h3 className="capitalize lg:text-xl font-semibold text-background">
-                    {items?.title}
+                    {items?.title || "Chips"}
                   </h3>
                   <PiWarningCircle
                     onClick={() => handleFlip(index)}
@@ -80,28 +81,18 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                   />
                 </div>
                 <h2 className="text-background font-bold text-xl lg:text-3xl">
-                  {items?.price}
+                  ${items?.price}
                 </h2>
                 <div className="h-10 flex items-center gap-1 px-2.5 w-fit bg-background/10 rounded mb-1">
                   <Image
-                    src={VIP}
+                    src={ChipsCoin}
                     alt="VIP"
                     width={30}
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
                   <h3 className="text-background font-bold lg:text-xl">
-                    {items?.vip}
-                  </h3>
-                  <Image
-                    src={Gold}
-                    alt="VIP"
-                    width={30}
-                    height={30}
-                    className="h-[30px] w-[30px]"
-                  />
-                  <h3 className="text-background font-bold lg:text-xl">
-                    {items?.coins}
+                    {items?.amount}
                   </h3>
                 </div>
                 <Button
@@ -143,18 +134,6 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
               </div>
               <div className="flex items-center gap-1">
                 <Image
-                  src={VIP}
-                  alt="VIP"
-                  width={30}
-                  height={30}
-                  className="h-[30px] w-[30px]"
-                />
-                <h3 className="text-background font-bold lg:text-xl">
-                  {items?.vip}
-                </h3>
-              </div>
-              <div className="flex items-center gap-1">
-                <Image
                   src={Gold}
                   alt="Gold"
                   width={30}
@@ -162,7 +141,7 @@ const MoneyCard = ({ list }: MoneyCardProps) => {
                   className="h-[30px] w-[30px]"
                 />
                 <h3 className="text-background font-bold lg:text-xl">
-                  {items?.coins}
+                  {items?.amount}
                 </h3>
               </div>
             </div>

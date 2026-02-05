@@ -1,6 +1,4 @@
-import { apiGet } from "@/lib/api";
-
-
+import { apiGet, apiPost } from "@/lib/api";
 
 interface WebStoreItem {
     type: string;
@@ -19,8 +17,18 @@ const getWebStore = async () => {
     return await apiGet<WebStoreItem[]>('/getWebStore');
 }
 
+const webLogin = async (payload: any) => {
+    return await apiPost('/webLogin', payload);
+}
+
+const purchaseChips = async () => {
+    return await apiPost('/purchaseChips');
+}
+
 const ApiService = {
-    getWebStore
+    getWebStore,
+    webLogin,
+    purchaseChips
 };
 
 export default ApiService;

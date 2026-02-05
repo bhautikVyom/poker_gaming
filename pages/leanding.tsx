@@ -1,57 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConnectButton from "@/components/common/ConnectButton";
 import PokerPlus from "@/components/common/PokerPlus";
 import Card from "@/components/common/Card";
 import Faqs from "@/components/common/faqs";
+import ApiService from "@/service/ApiUrl";
+import MoneyCard from "@/components/common/MoneyCard";
 
-const data = [
-    {
-        type: "chips",
-        name: "chips",
-        description: "Chips can be used to wager on hands within various game modes in Zynga Poker such as Texas Hold`Em, Omaha, Shortdeck, Pineapple Poker, and Tournaments. Chips can be earned through regular gameplay or bought directly. Using the Zynga Poker Store gives you 20% more Chips on purchases compared to the standard in-game Chips Store.",
-        data: [
-            {
-                image: "https://thumbnails.yayimages.com/1600/10/97d/1097de72.jpg",
-                title: "Great Vault",
-                price: "264,000,000,000",
-                vip: "2000",
-                coins: "10"
-            },
-            {
-                image: "https://www.tightpoker.com/app/uploads/2023/06/AdobeStock_257420103-874x492-1.jpg",
-                title: "Big Vault",
-                price: "264,000,000,000",
-                vip: "2000",
-                coins: "10"
-            },
-        ]
-    },
-    {
-        type: "gold",
-        name: "Gold",
-        description: "Gold can be used to spin our Mega Lucky Bonus machine, which earns you even MORE chips! Gold can be earned through regular gameplay or bought directly. Using the Zynga Poker Store gives you 20% more Gold on purchases compared to the standard in-game Gold Store.",
-        data: [
-            {
-                image: "https://thumbnails.yayimages.com/1600/10/97d/1097de72.jpg",
-                title: "Great Vault",
-                price: "264,000,000,000",
-                vip: "2000",
-                coins: "10"
-            },
-            {
-                image: "https://www.tightpoker.com/app/uploads/2023/06/AdobeStock_257420103-874x492-1.jpg",
-                title: "Big Vault",
-                price: "264,000,000,000",
-                vip: "2000",
-                coins: "10"
-            },
-        ]
-    }
-]
 const LeandingPage = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [data, setData] = useState<any>();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await ApiService.getWebStore();
+            setData(result);
+        }
+
+        fetchData();
+    }, [])
     return (
         <div>
             <ConnectButton setIsOpen={setIsOpen} isOpen={isOpen} />
@@ -71,9 +39,9 @@ const LeandingPage = () => {
                 </Link>
             </div> */}
 
-            <PokerPlus />
+            {/* <PokerPlus /> */}
 
-            <div className="bg-primary py-10 lg:py-24 p-2 lg:p-0">
+            {/* <div className="bg-primary py-10 lg:py-24 p-2 lg:p-0">
                 <div className="container border py-4 rounded-md">
                     <p className="text-background/80 italic lg:text-lg">
                         ACTIVE ZYNGA POKER ACCOUNT REQUIRED. 20% more chips and gold
@@ -82,13 +50,25 @@ const LeandingPage = () => {
                         of any purchase multipliers that are applicable to you.
                     </p>
                 </div>
-            </div>
+            </div> */}
 
-            {data?.map((list, index) => (
-                <section id={list?.type} key={index}>
-                    <Card list={list} />
-                </section>
-            ))}
+
+
+            <div className="bg-primary pb-10 lg:pb-24">
+                <div className="container">
+                    <div className="grid gap-7">
+                        <h3 className="text-[40px] font-bold capitalize text-background">Chips</h3>
+                        <p className="lg:text-lg text-background/80">
+                            Chips can be used to wager on hands within various game modes in
+                            Zynga Poker such as Texas Hold’Em, Omaha, Shortdeck, Pineapple
+                            Poker, and Tournaments. Chips can be earned through regular gameplay
+                            or bought directly. Using the Zynga Poker Store gives you 20% more
+                            Chips on purchases compared to the standard in-game Chips Store.
+                        </p>
+                        <MoneyCard list={data?.chipsStore} />
+                    </div>
+                </div>
+            </div>
 
             <Faqs />
         </div>

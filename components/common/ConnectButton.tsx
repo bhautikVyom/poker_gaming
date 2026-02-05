@@ -1,32 +1,46 @@
 import QRDialog from "@/components/common/QRDialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chips from "@/assets/images/chips-coin.avif"
 import Gold from "@/assets/images/chips-coin.avif"
+import { isMobileOrWebView } from "@/deviceType";
+import ApiService from "@/service/ApiUrl";
 
 interface Props {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
+interface profile {
+  userName: string;
+  pp: string;
+  chips: number;
+}
+
 const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
-  const userProfile = false
+  const [userProfile, setUserProfile] = useState(false)
+  const [profile, setProfile] = useState<profile>()
+  console.log("profile", profile);
 
-  const isMobileOrWebView = () => {
-    if (typeof window === "undefined") return false;
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isMobileOrWebView()) {
 
-    const ua = navigator.userAgent || navigator.vendor;
+        const payload = {
+          uid: "68c8fb1b212dc220dcd56508"
+        }
+        const result = await ApiService.webLogin(payload)
 
-    const isMobile = /android|iphone|ipad|ipod/i.test(ua);
+        if (result) {
+          setProfile(result)
+          setUserProfile(true)
+        }
+      }
+    }
 
-    const isWebView =
-      /(wv|WebView)/i.test(ua) ||
-      (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua));
-
-    return isMobile || isWebView;
-  };
-
+    fetchData()
+  }, [])
   return (
     <>
       <div className="sticky top-[60px] lg:top-20 left-0 z-20 w-full">
@@ -35,11 +49,7 @@ const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
             <div className="bg-primary/80 backdrop-blur-2xl h-10 flex items-center justify-center gap-4">
               <div className="flex items-center gap-2">
                 <Image src={Chips} alt="Chips Image" width={24} height={24} className="size-6" />
-                <span className="text-background font-semibold">0</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Image src={Gold} alt="Chips Image" width={24} height={24} className="size-6" />
-                <span className="text-background font-semibold">0</span>
+                <span className="text-background font-semibold">{profile?.uData?.chips}</span>
               </div>
             </div>
             <div className="p-4 bg-primary flex justify-start gap-4">
@@ -48,17 +58,17 @@ const ConnectButton = ({ isOpen, setIsOpen }: Props) => {
               </div>
               <div className="grid gap-1">
                 <h3 className="text-background text-xl line-clamp-1">
-                  Welcome, Priyank
+                  Welcome, {profile?.uData?.userName}
                 </h3>
                 <h3 className="text-background text-sm line-clamp-1">
-                  Account: {"9823154894812"}
+                  Account: {profile?.uData?.uniqueId}
                 </h3>
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full bg-blue-500"></div>
                   <h3 className="text-background text-sm line-clamp-1">
                     Sapphire
                   </h3>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
