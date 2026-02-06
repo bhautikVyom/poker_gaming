@@ -26,12 +26,12 @@ const LeandingPage = () => {
     const [userProfile, setUserProfile] = useState(false)
     const [profile, setProfile] = useState<profile>()
 
-    // const searchParams = useSearchParams();
-    const uid = "68c8fb1b212dc220dcd56508";
+    const searchParams = useSearchParams();
+    let uid = searchParams?.get("uid");
 
-    // if (isMobileOrWebView()) {
-    //     uid = searchParams?.get("uid");
-    // }
+    if (isMobileOrWebView()) {
+        uid = searchParams?.get("uid");
+    }
 
     useEffect(() => {
         const fetchData = async () => {

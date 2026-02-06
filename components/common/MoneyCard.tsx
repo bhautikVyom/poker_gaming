@@ -50,8 +50,8 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
   };
 
   const handlePurchase = async (items: MoneyItem) => {
-    console.log("items",items);
-    
+    console.log("items", items);
+
     const payload = {
       uid: uid,
       plan_id: items?.plan_id,
@@ -62,9 +62,15 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
     }
 
     const response = await ApiService.purchaseChips(payload)
-    if (response) {
-      setLink(response?.url)
+
+    if (response?.url) {
+      window.open(
+        response.url,
+        "stripeCheckout",
+        "width=500,height=700,top=100,left=500"
+      );
     }
+
   }
 
   const getImageByPrice = (price: string) => {
