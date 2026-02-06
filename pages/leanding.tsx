@@ -27,7 +27,7 @@ const LeandingPage = () => {
     const [profile, setProfile] = useState<profile>()
 
     const searchParams = useSearchParams();
-    let uid = searchParams?.get("uid");
+    let uid;
 
     if (isMobileOrWebView()) {
         uid = searchParams?.get("uid");
