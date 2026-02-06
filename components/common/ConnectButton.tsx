@@ -7,13 +7,13 @@ import Gold from "@/assets/images/chips-coin.avif"
 import { isMobileOrWebView } from "@/deviceType";
 
 interface profile {
-  userName: string;
-  pp: string;
-  chips: number;
-  uData: {
-    userName: string;
-    uniqueId: string;
-    chips: number;
+  userName?: string;
+  pp?: string;
+  chips?: number;
+  uData?: {
+    userName?: string;
+    uniqueId?: string;
+    chips?: number;
   };
 }
 
@@ -21,7 +21,8 @@ interface Props {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   uid: string
-  profile: profile
+  profile?: profile
+  userProfile: boolean
 }
 
 const ConnectButton = ({ isOpen, setIsOpen, uid, userProfile, profile }: Props) => {

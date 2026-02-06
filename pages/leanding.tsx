@@ -10,33 +10,46 @@ import { isMobileOrWebView } from "@/deviceType";
 import PokerPlus from "@/components/common/PokerPlus";
 
 interface profile {
-    userName: string;
-    pp: string;
-    chips: number;
-    uData: {
-        userName: string;
-        uniqueId: string;
-        chips: number;
+    userName?: string;
+    pp?: string;
+    chips?: number;
+    uData?: {
+        userName?: string;
+        uniqueId?: string;
+        chips?: number;
     };
+}
+
+interface ChipsItem {
+    type: string;
+    title: string;
+    price: string;
+    amount: string;
+    priceId?: string;
+    plan_id?: string;
+    active?: boolean;
+}
+
+interface StoreData {
+    chipsStore: ChipsItem[];
 }
 
 const LeandingPage = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [data, setData] = useState<any>();
+    const [data, setData] = useState<StoreData>();
     const [userProfile, setUserProfile] = useState(false)
     const [profile, setProfile] = useState<profile>()
 
     const searchParams = useSearchParams();
-    let uid;
 
-    if (isMobileOrWebView()) {
-        uid = searchParams?.get("uid");
-    }
+    const uid: string = isMobileOrWebView()
+        ? searchParams?.get("uid") || ""
+        : "";
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await ApiService.getWebStore();
-            setData(result);
+            setData(result as StoreData);
         }
 
         fetchData();

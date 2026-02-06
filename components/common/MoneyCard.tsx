@@ -31,12 +31,12 @@ interface MoneyItem {
 
 interface MoneyCardProps {
   list?: MoneyItem[];
+  uid?: string;
 }
 
 const MoneyCard = ({ list, uid }: MoneyCardProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const [link, setLink] = useState("")
 
   const [flippedCards, setFlippedCards] = useState<{ [key: number]: boolean }>(
     {}
@@ -50,7 +50,6 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
   };
 
   const handlePurchase = async (items: MoneyItem) => {
-    console.log("items", items);
 
     const payload = {
       uid: uid,
@@ -61,7 +60,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
       priceId: items?.priceId
     }
 
-    const response = await ApiService.purchaseChips(payload)
+    const response= await ApiService.purchaseChips(payload)
 
     if (response?.url) {
       window.open(
