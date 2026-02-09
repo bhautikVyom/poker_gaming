@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 
 export default function Success() {
-    const [countdown, setCountdown] = useState(500);
+    const [countdown, setCountdown] = useState(5);
 
     const redirectHome = () => {
         window.location.href = "/";

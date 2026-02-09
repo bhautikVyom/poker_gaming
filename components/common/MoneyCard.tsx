@@ -27,6 +27,7 @@ interface MoneyItem {
   priceId?: string;
   plan_id?: string;
   active?: boolean;
+  unit?: string;
 }
 
 interface MoneyCardProps {
@@ -60,7 +61,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
       priceId: items?.priceId
     }
 
-    const response= await ApiService.purchaseChips(payload)
+    const response = await ApiService.purchaseChips(payload)
 
     if (response?.url) {
       window.open(
@@ -86,6 +87,25 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
     return i8;
   };
 
+  const formatNumber = (value: string | number, unit?: string) => {
+    const num = Number(value);
+
+    if (isNaN(num)) return value;
+
+    if (num >= 1_000_000_000_000)
+      return (num / 1_000_000_000_000).toFixed(2).replace(/\.00$/, "") + " " + unit;
+
+    if (num >= 1_000_000_000)
+      return (num / 1_000_000_000).toFixed(2).replace(/\.00$/, "") + " " + unit;
+
+    if (num >= 1_000_000)
+      return (num / 1_000_000).toFixed(2).replace(/\.00$/, "") + " " + unit;
+
+    if (num >= 1_000)
+      return (num / 1_000).toFixed(2).replace(/\.00$/, "") + " " + unit;
+
+    return num.toString();
+  };
 
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] lg:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-4">
@@ -139,7 +159,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                     className="h-[30px] w-[30px]"
                   />
                   <h3 className="text-primary font-bold lg:text-xl">
-                    {items?.amount}
+                    {formatNumber(items?.amount, items?.unit)}
                   </h3>
                 </div>
                 {uid ? (
