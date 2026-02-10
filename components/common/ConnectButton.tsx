@@ -49,12 +49,6 @@ const ConnectButton = ({ isOpen, setIsOpen, uid, userProfile, profile }: Props) 
                 <h3 className="text-background text-sm line-clamp-1">
                   Account: {profile?.uData?.uniqueId}
                 </h3>
-                {/* <div className="flex items-center gap-3">
-                  <div className="h-3 w-3 rounded-full bg-blue-500"></div>
-                  <h3 className="text-background text-sm line-clamp-1">
-                    Sapphire
-                  </h3>
-                </div> */}
               </div>
             </div>
           </div>

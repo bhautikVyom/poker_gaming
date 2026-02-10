@@ -158,7 +158,7 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                     height={30}
                     className="h-[30px] w-[30px]"
                   />
-                  <h3 className="text-primary font-bold lg:text-xl">
+                  <h3 className="text-primary font-bold lg:text-xl capitalize">
                     {formatNumber(items?.amount, items?.unit)}
                   </h3>
                 </div>

@@ -1,18 +1,18 @@
 import { apiGet, apiPost } from "@/lib/api";
 
 interface MoneyItem {
-  type: string;
-  title: string;
-  price: string;
-  amount: string;
-  priceId?: string;
-  plan_id?: string;
-  active?: boolean;
+    type: string;
+    title: string;
+    price: string;
+    amount: string;
+    priceId?: string;
+    plan_id?: string;
+    active?: boolean;
 }
 
 interface MoneyCardProps {
-  list?: MoneyItem[];
-  uid?: string;
+    list?: MoneyItem[];
+    uid?: string;
 }
 
 interface profile {
@@ -26,6 +26,16 @@ interface profile {
     };
 }
 
+interface FaqItem {
+    que: string
+    ans: string[]
+}
+
+interface FaqApiResponse {
+    chipsStore: FaqItem[]
+}
+
+
 const getWebStore = async () => {
     return await apiGet('/getWebStore');
 }
@@ -38,10 +48,15 @@ const purchaseChips = async (payload: MoneyCardProps): Promise<{ url: string }> 
     return await apiPost('/purchaseChips', payload);
 }
 
+const getFAQ = async (): Promise<FaqApiResponse> => {
+    return await apiGet('/getFAQ');
+}
+
 const ApiService = {
     getWebStore,
     webLogin,
-    purchaseChips
+    purchaseChips,
+    getFAQ
 };
 
 export default ApiService;

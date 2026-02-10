@@ -1,16 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "../../assets/images/logo1.png";
 import SheetMenu from "./SheetMenu";
 import HeaderMenu from "./HeaderMenu";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import QRDialog from "../common/QRDialog";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="bg-primary backdrop-blur-2xl py-3 lg:py-5 sticky top-0 z-20">
@@ -32,33 +28,7 @@ const Header = () => {
             <div className="lg:hidden">
               <SheetMenu />
             </div>
-          </div>
-          <div className="items-center justify-center space-x-4 p-2.5 hidden lg:block">
-            <Link
-              href="#chips"
-              className="uppercase rounded-md  text-background bg-primary font-bold px-5 py-1.5 text-lg"
-            >
-              Chips
-            </Link>
-            <Link
-              href="#gold"
-              className="uppercase rounded-md  text-background bg-primary font-bold px-5 py-1.5 text-lg"
-            >
-              gold
-            </Link>
-          </div>
-          {/* <div>
-            <Link href="#chips" className="font-semibold text-background/70 hover:text-background">Chips</Link>
-            <Link href="#gold" className="font-semibold text-background/70 hover:text-background">Gold</Link>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setIsOpen(true);
-              }}
-            >
-              Connect
-            </Button>
-          </div> */}
+          </div>         
         </div>
       </div>
     </div>

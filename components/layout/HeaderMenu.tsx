@@ -6,9 +6,9 @@ import { usePathname } from "next/navigation";
 
 const MenuData: { name: string; link: string }[] = [
   { name: "Home", link: "/" },
-  { name: "About", link: "/about" },
-  { name: "Games", link: "/games" },
-  { name: "Contact", link: "/contact" },
+  { name: "About", link: "https://lalagaming.com/#about" },
+  { name: "Games", link: "https://lalagaming.com/#game" },
+  { name: "Contact", link: "https://lalagaming.com/#contact" },
 ];
 
 const HeaderMenu = () => {
