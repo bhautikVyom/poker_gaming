@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import splash from '../../assets/images/splash.png'
+import splash from "../../assets/images/splash.png";
 
 export default function SplashScreen({ children }: any) {
   const [loading, setLoading] = useState(true);
@@ -14,19 +14,22 @@ export default function SplashScreen({ children }: any) {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return (
-     <div className="fixed inset-0 z-50">
-        <Image
-          src={splash}
-          alt="Lala Poker"
-          fill
-          priority
-          className="object-fill animate-pulse"
-        />
-      </div>
-    );
-  }
+  return (
+    <>
+      {children}
 
-  return children;
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-primary">
+          <Image
+            src={splash}
+            alt="Lala Poker"
+            width={500}
+            height={500}
+            priority
+            className="animate-pulse"
+          />
+        </div>
+      )}
+    </>
+  );
 }

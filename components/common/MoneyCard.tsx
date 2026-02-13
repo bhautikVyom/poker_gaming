@@ -11,13 +11,14 @@ import i6 from "@/assets/images/6.png";
 import i7 from "@/assets/images/7.png";
 import i8 from "@/assets/images/8.png";
 
-import ChipsCoin from "@/assets/images/chips-coin.avif";
+import ChipsCoin from "@/assets/images/chip.png";
 import Gold from "@/assets/images/gold.avif";
 import { PiWarningCircle } from "react-icons/pi";
 import { Button } from "../ui/button";
 import { IoClose } from "react-icons/io5";
 import QRDialog from "./QRDialog";
 import ApiService from "@/service/ApiUrl";
+import { isMobileOrWebView } from "@/deviceType";
 
 interface MoneyItem {
   type: string;
@@ -172,11 +173,14 @@ const MoneyCard = ({ list, uid }: MoneyCardProps) => {
                 ) : (
                   <Button
                     className="text-xl py-2! px-5.5 h-auto uppercase w-full"
-                    onClick={
-                      () => {
+                    onClick={() => {
+                      if (isMobileOrWebView()) {
+                        window.location.href =
+                          "https://lalapoker.onelink.me/Wn19/rewardCampaign?code=weblogin&deep_link_value=weblogin";
+                      } else {
                         setIsOpen(true);
                       }
-                    }
+                    }}
                   >
                     login
                   </Button>

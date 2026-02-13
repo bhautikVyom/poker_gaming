@@ -2,8 +2,8 @@ import QRDialog from "@/components/common/QRDialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
-import Chips from "@/assets/images/chips-coin.avif"
-import Gold from "@/assets/images/chips-coin.avif"
+import Chips from "@/assets/images/chip.png"
+import Gold from "@/assets/images/chip.png"
 import { isMobileOrWebView } from "@/deviceType";
 
 interface profile {
