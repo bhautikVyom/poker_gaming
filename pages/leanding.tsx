@@ -5,7 +5,7 @@ import ConnectButton from "@/components/common/ConnectButton";
 import Faqs from "@/components/common/faqs";
 import ApiService from "@/service/ApiUrl";
 import MoneyCard from "@/components/common/MoneyCard";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { isMobileOrWebView } from "@/deviceType";
 import PokerPlus from "@/components/common/PokerPlus";
 import { Button } from "@/components/ui/button";
@@ -45,6 +45,7 @@ const LeandingPage = () => {
     const [uid, setUid] = useState<string | undefined>()
 
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -85,6 +86,7 @@ const LeandingPage = () => {
                         "WEB_USER_PROFILE",
                         JSON.stringify(result)
                     );
+                    router.replace("/");
                 }
             } catch (error) {
                 console.error("Web login failed:", error);
