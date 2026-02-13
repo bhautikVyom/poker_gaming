@@ -70,6 +70,8 @@ const LeandingPage = () => {
                     uid = parsedProfile?.uData?._id
                 }
 
+                if (!uid) return;
+
                 const payload = { uid: uid };
 
                 const result = await ApiService.webLogin(payload);
