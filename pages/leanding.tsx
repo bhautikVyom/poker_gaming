@@ -93,7 +93,7 @@ const LeandingPage = () => {
         };
 
         handleLogin();
-    }, [uid]);
+    }, []);
 
     return (
         <div className="min-h-screen bg-[url('../assets/background.jpg')] bg-cover bg-center bg-no-repeat">

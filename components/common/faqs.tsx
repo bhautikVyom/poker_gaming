@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import ApiService from '@/service/ApiUrl'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface FaqItem {
     que: string;
@@ -9,8 +9,12 @@ interface FaqItem {
 
 const Faqs = () => {
     const [data, setData] = useState<FaqItem[]>([])
+    const hasFetched = useRef(false);
 
     useEffect(() => {
+        if (hasFetched.current) return;
+        hasFetched.current = true;
+
         const fetchData = async () => {
             const result = await ApiService.getFAQ();
             setData(result?.chipsStore);
@@ -18,7 +22,6 @@ const Faqs = () => {
 
         fetchData();
     }, [])
-
 
     return (
         <div className='pb-10 lg:pb-24'>
