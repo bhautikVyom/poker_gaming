@@ -20,12 +20,11 @@ interface profile {
 interface Props {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  uid: string
   profile?: profile
   userProfile: boolean
 }
 
-const ConnectButton = ({ isOpen, setIsOpen, uid, userProfile, profile }: Props) => {
+const ConnectButton = ({ isOpen, setIsOpen, userProfile, profile }: Props) => {
 
   return (
     <>
