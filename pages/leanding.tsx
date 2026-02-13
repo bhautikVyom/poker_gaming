@@ -42,10 +42,9 @@ const LeandingPage = () => {
     const [data, setData] = useState<StoreData>();
     const [userProfile, setUserProfile] = useState(false)
     const [profile, setProfile] = useState<profile>()
+    const [uid, setUid] = useState<string | undefined>()
 
     const searchParams = useSearchParams();
-
-    let uid
 
     useEffect(() => {
         const fetchData = async () => {
@@ -61,18 +60,20 @@ const LeandingPage = () => {
 
         const handleLogin = async () => {
             try {
-                uid = searchParams?.get("uid");
+                let finaluid = searchParams?.get("uid");
 
-                const sessionProfile = sessionStorage.getItem("WEB_USER_PROFILE");
+                const sessionProfile = localStorage.getItem("WEB_USER_PROFILE");
 
-                if (!uid && sessionProfile) {
+                if (!finaluid && sessionProfile) {
                     const parsedProfile = JSON.parse(sessionProfile);
-                    uid = parsedProfile?.uData?._id
+                    finaluid = parsedProfile?.uData?._id;
                 }
 
-                if (!uid) return;
+                if (!finaluid) return;
 
-                const payload = { uid: uid };
+                setUid(finaluid)
+
+                const payload = { uid: finaluid };
 
                 const result = await ApiService.webLogin(payload);
 
@@ -80,14 +81,14 @@ const LeandingPage = () => {
                     setProfile(result);
                     setUserProfile(true);
 
-                    sessionStorage.setItem(
+                    localStorage.setItem(
                         "WEB_USER_PROFILE",
                         JSON.stringify(result)
                     );
                 }
             } catch (error) {
                 console.error("Web login failed:", error);
-                sessionStorage.removeItem("WEB_USER_PROFILE")
+                localStorage.removeItem("WEB_USER_PROFILE")
             }
         };
 
